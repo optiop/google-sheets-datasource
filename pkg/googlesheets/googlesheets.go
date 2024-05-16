@@ -248,20 +248,7 @@ var converterMap = map[ColumnType]data.FieldConverter{
 
 func getUniqueColumnName(formattedName string, columnIndex int, columns map[string]bool) string {
 	name := formattedName
-	if name == "" {
-		name = fmt.Sprintf("Field %d", columnIndex+1)
-	}
-
-	nameExist := true
-	counter := 1
-	for nameExist {
-		if _, exist := columns[name]; exist {
-			name = fmt.Sprintf("%s%d", formattedName, counter)
-			counter++
-		} else {
-			nameExist = false
-		}
-	}
+	name = fmt.Sprintf("Field %d", columnIndex+1)
 
 	return name
 }
